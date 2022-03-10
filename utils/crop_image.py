@@ -17,7 +17,7 @@ def crop_image(img, boxes, idx, mBlur=3, gBlur=(5, 5)):
     gaussBlur = cv2.GaussianBlur(medBlur, gBlur, 0)
 
     ret, thresh = cv2.threshold(
-        gaussBlur, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+        gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
 
     rect_kern = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     dilation = cv2.dilate(thresh, rect_kern, iterations=1)
